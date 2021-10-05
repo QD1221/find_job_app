@@ -1,3 +1,4 @@
+import 'package:find_job_app/mock/jobs.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -88,9 +89,34 @@ class _MainPageState extends State<MainPage> {
                     ),
                     Container(
                       height: 140,
+                      width: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.teal,
                         borderRadius: BorderRadius.circular(6),
+                      ),
+                      padding: EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Looking for Job Open Big\nOpportunity',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextButton.icon(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.arrow_downward_outlined,
+                              color: Colors.white,
+                            ),
+                            label: Text(
+                              'Apply now',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Padding(
@@ -115,8 +141,132 @@ class _MainPageState extends State<MainPage> {
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
-                          children: [Placeholder(),
-                          ],
+                          children: jobItems
+                              .map((e) => Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Card(
+                                    elevation: 4,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 16, left: 8),
+                                            child: Image.network(
+                                              '${e.img}',
+                                              height: 52,
+                                              width: 52,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets
+                                                      .symmetric(
+                                                  horizontal: 16),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment
+                                                        .start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        '${e.title}',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight
+                                                                  .bold,
+                                                        ),
+                                                      ),
+                                                      IconButton(
+                                                        iconSize: 16,
+                                                        onPressed: () {},
+                                                        icon: Icon(
+                                                            e.isFavorite ??
+                                                                    false
+                                                                ? Icons
+                                                                    .favorite
+                                                                : Icons
+                                                                    .favorite_border),
+                                                        color:
+                                                            e.isFavorite ??
+                                                                    false
+                                                                ? Colors
+                                                                    .green
+                                                                : Colors
+                                                                    .grey,
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.location_on,
+                                                        size: 14,
+                                                      ),
+                                                      Text(
+                                                        '${e.location}',
+                                                        style: TextStyle(
+                                                            fontSize: 13),
+                                                      ),
+                                                      Spacer(),
+                                                      Text(
+                                                        '${e.uploadDate}',
+                                                        style: TextStyle(
+                                                            fontSize: 11,
+                                                            color: Colors
+                                                                .grey),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 8,),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Colors.indigo,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      24),
+                                                        ),
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                                vertical: 4, horizontal: 8),
+                                                        child: Text(
+                                                          e.timeType ??
+                                                              'Unknown',
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .white, fontSize: 12),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 8,),
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ))
+                              .toList(),
                         ),
                       ),
                     )
