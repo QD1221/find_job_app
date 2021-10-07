@@ -28,15 +28,11 @@ class _MainPageState extends State<MainPage> {
                 children: [
                   HomeWidget(),
                   FavoriteWidget(),
-                  Container(
-                    child: Center(
-                      child: Text('Notification page'),
-                    ),
+                  Center(
+                    child: Text('Notification page'),
                   ),
-                  Container(
-                    child: Center(
-                      child: Text('Notification page'),
-                    ),
+                  Center(
+                    child: Text('Notification page'),
                   )
                 ],
               ),

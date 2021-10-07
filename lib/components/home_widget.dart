@@ -1,5 +1,6 @@
 import 'package:find_job_app/components/component.dart';
 import 'package:find_job_app/mock/jobs.dart';
+import 'package:find_job_app/ui/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -136,12 +137,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                 child: Column(
                   children: jobItems
                       .map((e) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Component(job: e),
-                    ),
-                  ))
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: GestureDetector(
+                                  onTap: () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DetailPage(job: e))),
+                                  child: Component(job: e)),
+                            ),
+                          ))
                       .toList(),
                 ),
               ),

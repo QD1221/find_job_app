@@ -25,4 +25,12 @@ List<Job> jobItems = [
       isFavorite: true,
       uploadDate: "4 week ago"
   ),
+  Job(
+      img: "https://cdn.pixabay.com/photo/2015/05/31/13/45/young-woman-791849__340.jpg",
+      title: "Job relative heading",
+      location: "Abohar, Punjab",
+      timeType: "Full time",
+      isFavorite: false,
+      uploadDate: "2 week ago"
+  ),
 ];
